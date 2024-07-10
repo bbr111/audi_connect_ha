@@ -150,19 +150,8 @@ class AudiAccount(AudiConnectObserver):
                         cfg_vehicle.locks.add(instrument)
 
             await self.hass.config_entries.async_forward_entry_setups(
-                self.config_entry, "sensor"
-            )
-            await self.hass.config_entries.async_forward_entry_setups(
-                self.config_entry, "binary_sensor"
-            )
-            await self.hass.config_entries.async_forward_entry_setups(
-                self.config_entry, "switch"
-            )
-            await self.hass.config_entries.async_forward_entry_setups(
-                self.config_entry, "device_tracker"
-            )
-            await self.hass.config_entries.async_forward_entry_setups(
-                self.config_entry, "lock"
+                self.config_entry,
+                ["sensor", "binary_sensor", "switch", "device_tracker", "lock"],
             )
 
     async def update(self, now):
